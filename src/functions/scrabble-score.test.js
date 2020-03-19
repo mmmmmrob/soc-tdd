@@ -9,17 +9,41 @@ describe("Scrabble Score", () => {
     expect(scrabbleScore("A")).toEqual(1);
   });
 
-  it.skip("should score cabbage as 14 points", () => {
+  it("should score cabbage as 14 points", () => {
     expect(scrabbleScore("cabbage")).toEqual(14);
   });
 
-  it.todo("should score all letters correctly");
-  it.todo("should score short words");
-  it.todo("should score long words");
-
-  it.skip("should throw if given numbers", () => {
-    expect(scrabbleScore("l33t")).toThrowError("Invalid characters given.");
+  it("should score all letters correctly", () => {
+    const letters = [..."abcdefghijklmnopqrstuvwxyz"];
+    let expectedScores = [..."13321424185131130111144840"];
+    expectedScores = expectedScores.map(i => (i === "0" ? 10 : parseInt(i)));
+    const actualScores = letters.map(letter => scrabbleScore(letter));
+    expect(actualScores).toEqual(expectedScores);
   });
-  it.todo("should throw if given symbols");
-  it.todo("should throw if characters outside a to z");
+
+  it("should score short words", () => {
+    const words = ["a", "the", "it", "i"];
+    const expectedScores = [1, 6, 2, 1];
+    const actualScores = words.map(scrabbleScore);
+    expect(actualScores).toEqual(expectedScores);
+  });
+
+  it("should score long words", () => {
+    const words = ["wheezily", "jukebox", "quickly", "maximize"];
+    const expectedScores = [26, 27, 25, 28];
+    const actualScores = words.map(scrabbleScore);
+    expect(actualScores).toEqual(expectedScores);
+  });
+
+  it("should throw if given numbers", () => {
+    expect(() => scrabbleScore("l33t")).toThrow("Invalid characters given.");
+  });
+
+  it("should throw if given symbols", () => {
+    expect(() => scrabbleScore("$chool")).toThrow("Invalid characters given.");
+  });
+
+  it("should throw if characters outside a to z", () => {
+    expect(() => scrabbleScore("ǣ")).toThrow("Invalid characters given.");
+  });
 });
