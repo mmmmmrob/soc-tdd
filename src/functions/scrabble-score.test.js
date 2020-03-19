@@ -18,7 +18,9 @@ describe("Scrabble Score", () => {
   it.todo("should score long words");
 
   it.skip("should throw if given numbers", () => {
-    expect(scrabbleScore("l33t")).toThrowError("Invalid characters given.");
+    expect(() => scrabbleScore("l33t")).toThrowError(
+      "Invalid characters given."
+    );
   });
   it.todo("should throw if given symbols");
   it.todo("should throw if characters outside a to z");
