@@ -23,7 +23,7 @@ describe("ScrabbleBoard Component", () => {
   it("should render an empty board", () => {
     const { getAllByRole } = render(<ScrabbleBoard board={testBoards.empty} />);
     const isEveryCellEmpty = getAllByRole("cell").every(
-      el => getNodeText(el) === "-"
+      (el) => getNodeText(el) === ""
     );
     expect(isEveryCellEmpty).toBeTruthy();
   });
@@ -32,15 +32,15 @@ describe("ScrabbleBoard Component", () => {
     const { container } = render(<ScrabbleBoard board={testBoards.banana} />);
     const row = getAllByRole(container, "row")[5];
     const cells = getAllByRole(row, "cell").slice(3, 9);
-    const actualText = cells.map(el => getNodeText(el)).join("");
+    const actualText = cells.map((el) => getNodeText(el)).join("");
     expect(actualText).toEqual("banana");
   });
 
   it("should render a board with a word going down", () => {
     const { container } = render(<ScrabbleBoard board={testBoards.apple} />);
     const rows = getAllByRole(container, "row").slice(5, 10);
-    const cells = rows.map(row => getAllByRole(row, "cell")[3]);
-    const actualText = cells.map(el => getNodeText(el)).join("");
+    const cells = rows.map((row) => getAllByRole(row, "cell")[3]);
+    const actualText = cells.map((el) => getNodeText(el)).join("");
     expect(actualText).toEqual("apple");
   });
 

@@ -36,3 +36,36 @@
     transform: rotate(360deg);
   }
 }
+
+* {
+  box-sizing: border-box;
+}
+
+.foo {
+  color: #c19a57, #557215, #32566c, #121608, #c6c6c6;
+}
+
+table {
+  width: 90%;
+  margin: 1rem auto;
+  aspect-ratio: 1/1;
+  border-spacing: 0;
+  background-color: #557215;
+}
+
+table tr td {
+  border-bottom: 1px solid gray;
+  border-right: 1px solid gray;
+  border-top: 1px solid lightgray;
+  border-left: 1px solid lightgray;
+  border-radius: 10px;
+  text-transform: uppercase;
+  width: calc(0.8 * 100vw * (1 / 15));
+  height: calc(0.8 * 100vw * (1 / 15));
+  background-color: #c19a57;
+}
+
+table tr td:empty {
+  background-color: transparent;
+  border-radius: 0;
+}

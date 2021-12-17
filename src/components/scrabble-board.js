@@ -8,7 +8,9 @@ export default class ScrabbleBoard extends React.Component {
           {this.props.board.split("\n").map((row, y) => (
             <tr key={`row-${y}`}>
               {row.split("").map((cell, x) => {
-                return <td key={`cell-${x}${y}`}>{cell}</td>;
+                return (
+                  <td key={`cell-${y}-${x}`}>{cell === "-" ? "" : cell}</td>
+                );
               })}
             </tr>
           ))}
